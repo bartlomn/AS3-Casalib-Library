@@ -23,7 +23,7 @@ public class VectorUtil
     @return returns array containing elements of the input vector
     @see: http://jacksondunstan.com/articles/192
     */
-   public static function vectorToArray( vector : Object ) : Array
+   public static function convertToArray( vector : Object ) : Array
    {
       var result:Array = [];
       for each( var item:Object in vector )
