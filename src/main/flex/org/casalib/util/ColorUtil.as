@@ -30,7 +30,9 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 package org.casalib.util {
-	import flash.geom.ColorTransform;
+import flash.display.DisplayObject;
+import flash.display.MovieClip;
+import flash.geom.ColorTransform;
 	import org.casalib.math.Percent;
 	import org.casalib.util.NumberUtil;
 	
@@ -189,5 +191,22 @@ package org.casalib.util {
 			bb = (bb.length == 1) ? '0' + bb : bb;
 			return (rr + gg + bb).toUpperCase();
 		}
+
+      /**
+         Tints the given DisplayObject
+
+       @param target: DisplayObject instance to get tinted
+       @param color: tint color
+       @param alpha: tint alpha
+       */
+      public static function tint( target:DisplayObject, color:uint, alpha:int ):void
+      {
+         var ctMul:Number = (1-alpha);
+         var ctRedOff:Number = Math.round(alpha * getRGB(color ).r);
+         var ctGreenOff:Number = Math.round(alpha*getRGB(color ).g);
+         var ctBlueOff:Number = Math.round(alpha*getRGB(color ).b);
+         var ct:ColorTransform = new ColorTransform(ctMul,ctMul,ctMul,1,ctRedOff,ctGreenOff,ctBlueOff,0);
+         target.transform.colorTransform = ct;
+      }
 	}
 }
